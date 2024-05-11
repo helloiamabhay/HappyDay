@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>happy life pase</title>
+    <link rel="stylesheet" href="happylife.css">
+    <style>
+     
+        #box{
+     
+            padding: 5px;
+            width: 95%;
+            
+        }
+        .fullbox{
+           
+            margin-left: 11%;
+            margin-right: 11%;
+            border: 1px solid black;
+           padding: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+            font-size: 20px;
+           
+            box-shadow: 0px 1px 18px -1px rgba(5, 1, 17, 0.671);
+          
+        }
+        #delete{
+            height: 40px;
+            width: 50px;
+    
+            margin-left: 5px;
+            
+            background-color: red;
+            border: 1px solid rgb(232, 238, 233);
+            border-radius: 5px;
+            
+        }
+        #edit{
+            height: 40px;
+            width: 50px;
+           
+            margin-left: 5px;
+           
+            background-color: rgba(0, 255, 21, 0.931);
+            border: 1px solid rgb(247, 242, 242);
+            border-radius: 5px;  
+        }
+        p{
+            text-align: center;
+       
+        }
+        #address{
+            width: 60%;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            margin-top: 126px;
+        }
+  .addressinput{
+            width: 80%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+             padding-left:10%;
+             padding-right:10%;
+             padding-top: 5%;
+
+        }
+        #add_btn{
+            padding: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-left: 44.5%;
+            background:rgba(6, 73, 243, 0.832);
+            border-radius: 5px;
+            font-size: 20px;
+          
+           
+
+        }
+        .btns{
+         text-align: center;
+        }
+        h4{
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        .input{
+            text-align: center;
+           
+        }
+        .countnum{
+            margin-top: 0px;
+            margin-bottom: 0px;
+
+        }
+    
+    </style>
+
+</head>
+<body>
+    <nav>
+        <ul class="navul ">
+        <img class="logoimg" src="./imgs/navlogo.png" alt="">
+        <div class="listitems alldlt ">
+        <li class="navli "  ><a class="nava" href="index.html"  rel="noopener noreferrer">Home</a></li>
+        <li class="navli "  ><a class="nava" href="About.html"  rel="noopener noreferrer">About</a></li>
+        <li class="navli "  ><a class="nava" href="Happylife.html"  rel="noopener noreferrer">Happy-life</a></li>
+        <li class="navli"  ><a class="nava" href="Health.html"  rel="noopener noreferrer">Health</a></li>
+        <li class="navli "  ><a class="nava" href="Contact.html"  rel="noopener noreferrer">Contact</a></li>
+        </div>
+        <div id="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        
+    </ul>
+   
+    </nav>
+ 
+
+
+    <div class="container mt-5 col-8">
+        <div class="input">
+            <textarea name="address" id="address" class="addressinput" required cols="70" rows="5" placeholder="Enter your opinions,thought,goals, feeling or plan. because it is makes us to better. "></textarea>
+    
+            <!-- <input type="text" id="inpt" class="form-control" placeholder="chapter name" aria-label="Recipient's username" aria-describedby="button-addon2"> -->
+          </div> 
+            <button id="add_btn" class="btn btn-outline-success" type="button" id="button-addon2">Add</button>
+    
+          <div id="container">
+            <div class="fullbox">
+                <div id="box">
+                   <h1 class="countnum">1</h1>
+                   <p>chapter 1  </p>
+               </div>
+               <div class="btns">
+                   <button id="edit">edit</button>
+                   <button id="delete">delete</button>
+             </div>
+             </div>
+         </div>
+          </div>
+
+        <footer>
+        <div class="footerflex">
+        <a  href="https://www.linkedin.com/in/abhay-vishwakarma-9aa93425a/"><img  class="linkedin" src="./imgs/linkedin.png" alt=""></a>
+        <div class="ownerimgbox">
+        <img class="ownerimg" src="./imgs/owner.png" alt="">
+        <h2 class="footh2">OUR FOUNDER</h2>
+        <h4 class="footh4">Abhay vishwakarma</h4>
+        </div>
+        <a  href="https://github.com/Abhay1vishwakarma/Abhay1vishwakarma" ><img class="github" src="./imgs/gitgub.png" alt=""></a>
+</div>
+    </footer>
+    
+   <script>
+    let navbtn=document.getElementById("burger")
+let navulbtn=document.querySelector(".navul")
+let listitem=document.querySelector(".listitems")
+let navlist=document.querySelectorAll(".navli")
+console.log(navlist)
+
+
+navbtn.addEventListener('click',()=>{
+  
+    listitem.classList.toggle("alldlt");
+})
+   </script> 
+
+   <script>
+
+    // let inpt=document.getElementById('inpt')
+     let inpt=document.getElementById('address')
+     let addbtn=document.getElementById('add_btn')
+     let addbox=document.getElementById('container')
+ 
+    
+    let adddata=localStorage.getItem('userdata')
+ 
+    if (adddata==null){
+        taskobj=[]
+    }
+    else{
+     taskobj=JSON.parse(adddata)
+    }
+ 
+    addbtn.addEventListener('click',()=>{
+     addinput=inpt.value
+     taskobj.push(addinput)
+     localStorage.setItem("userdata",JSON.stringify(taskobj))       
+        
+     showdata()                                                                                                                                                                                                                     
+    })
+ 
+    function showdata(){
+     let textbox=" "
+     let box=document.getElementById("container")
+     taskobj.forEach((item,index)=>{
+         textbox+=`
+         <div class="fullbox">
+             <div id="box">
+                <h1 class="countnum">${index+1}.</h1>
+                <p>${item}</p>
+            </div>
+            <div class="btns">
+                <button id="edit" onclick="editbox(this)">edit</button>
+                <button id="delete" onclick="removebox(this)">delete</button>
+          </div>
+         </div>
+         `
+     })
+     box.innerHTML=textbox
+     
+    }
+ showdata()
+    function removebox(current){
+     let dltitem=current.parentElement.previousElementSibling.children[0].innerHTML
+     let dlt1=dltitem-1
+     console.log(dlt1)
+     taskobj.splice(dlt1,1)
+     localStorage.setItem("userdata",JSON.stringify(taskobj))
+     console.log(typeof (taskobj));
+     document.location.reload()
+    }
+ 
+ function editbox(currentinpt){
+     if(currentinpt.textContent=="edit"){
+ let item=currentinpt.parentElement.previousElementSibling.children[1]
+ 
+ //let item=currentinpt.parentElement.previousElementSibling.children[1]
+ currentinpt.textContent="Done"
+ 
+ let editinput=document.createElement("textarea")
+    editinput.classList.add("addressinput")
+ editinput.rows="10"
+    console.log(editinput)
+ editinput.value=item.innerHTML
+ item.parentElement.replaceChild(editinput,item)
+ 
+     }
+ 
+     else if(currentinpt.textContent=="Done"){
+ let item=currentinpt.parentElement.previousElementSibling.children[1]
+ currentinpt.textContent="edit"
+ 
+ let edittext=document.createElement("p")
+ edittext.innerHTML=item.value
+ console.log(edittext)
+ item.parentElement.replaceChild(edittext,item)
+ 
+ 
+ let dltitem=currentinpt.parentElement.previousElementSibling.children[0].innerHTML
+ let dlt1=dltitem-1
+ console.log(dlt1)
+ console.log(taskobj[dlt1]);
+ taskobj[dlt1]=item.value
+ localStorage.setItem("userdata",JSON.stringify(taskobj))
+ console.log(taskobj[dlt1]);
+ 
+     }
+ }
+ </script>
+</body>
+</html>
